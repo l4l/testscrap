@@ -39,13 +39,15 @@ public class ComLine {
 
                 int temp = 1;
                 switch (args[i].charAt(1)) {
-                    case 'e':       //flag = 0b1000;
+                    case 'm':       //flag = 0b10000;
                         temp <<= 1;
-                    case 'c':       //flag = 0b0100;
+                    case 'e':       //flag = 0b01000;
                         temp <<= 1;
-                    case 'w':       //flag = 0b0010;
+                    case 'c':       //flag = 0b00100;
                         temp <<= 1;
-                    case 'v':       //flag = 0b0001;
+                    case 'w':       //flag = 0b00010;
+                        temp <<= 1;
+                    case 'v':       //flag = 0b00001;
                         m.flagBitsDivides(temp);
                 }
             } else
