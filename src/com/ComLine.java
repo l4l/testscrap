@@ -46,7 +46,7 @@ public class ComLine {
                     case 'w':       //flag = 0b0010;
                         temp <<= 1;
                     case 'v':       //flag = 0b0001;
-                        m.disjun(temp);
+                        m.flagBitsDivides(temp);
                 }
             } else
                 break; //If input is ok, this will never execute

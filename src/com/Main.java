@@ -35,12 +35,12 @@ public class Main {
         for (java.net.URL u : comLine.getURL_LIST()) {
             System.out.println("************************************");
             if (FLAGS_MODE.VERBOSE_MODE.flagCheck(m.flags))
-                m.time[i] = System.nanoTime();
+                m.time[i] = System.currentTimeMillis();
             HtmlParser hp = new HtmlParser(u);
-            System.out.println("Info about site" + u.toURI().toString());
+            System.out.println("Info about site " + u.toURI().toString());
             if (FLAGS_MODE.VERBOSE_MODE.flagCheck(m.flags)) {
-                m.time[i] = System.nanoTime() - m.time[i];
-                System.out.println("Time elapsed till parsing: " + m.time[i++]);
+                m.time[i] = System.currentTimeMillis() - m.time[i];
+                System.out.printf("Time elapsed till parsing: %f seconds\n", (double) m.time[i++] / 1000);
             }
             if (FLAGS_MODE.WORD_COUNTER_MODE.flagCheck(m.flags)) {
                 for (String s : comLine.getWORDS()) {
@@ -55,8 +55,8 @@ public class Main {
                 StringBuilder s = new StringBuilder("");
                 for (String str2 : comLine.getWORDS()) {
                     for (String str1 : hp.getSentences()) {
-                        if (str1.split(str2, 1).length == 2)
-                            s.append(str2).append("\n\t");
+                        if (str1.contains(str2))
+                            s.append("\t").append(str1).append("\n");
                     }
                     System.out.printf("Word \"%s\" was finded at this sentences:\n%s", str2, s);
                 }
@@ -69,14 +69,14 @@ public class Main {
     public static int counter(java.util.ArrayList<String> sent, String str) {
         int i = 0;
         for (String s : sent) {
-            if (s.equals(str))
+            if (s.contains(str))
                 i++;
         }
 
         return i;
     }
 
-    public void disjun(int t) {
+    public void flagBitsDivides(int t) {
         flags |= t;
     }
     private enum FLAGS_MODE {

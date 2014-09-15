@@ -19,7 +19,9 @@ public class HtmlParser {
         htmlReplacements.put("&mdash;", "—");
         parsable = new char[][]{
                 "p".toCharArray(), "h1".toCharArray(), "h2".toCharArray(), "h3".toCharArray(),
-                "h4".toCharArray(), "span".toCharArray(), "script".toCharArray()
+                "h4".toCharArray(), "span".toCharArray(), "div".toCharArray(), "a".toCharArray(),
+
+                "script".toCharArray()
         };
     }
 
